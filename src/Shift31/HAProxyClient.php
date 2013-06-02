@@ -50,10 +50,9 @@ class HAProxyClient
         $this->_checkMaxRetries = $checkMaxRetries;
         $this->_logger = $logger;
 
-        $this->_client = new Client();
-        $this->_client->setAuth($this->_username, $this->_password);
-
         if ($serverFqdn != null) {
+            $this->_client = new Client();
+            $this->_client->setAuth($this->_username, $this->_password);
             $this->setStatsUrl($serverFqdn);
             $this->setClientUri($serverFqdn);
         }
@@ -129,6 +128,8 @@ class HAProxyClient
 
         foreach ($loadBalancers as $loadBalancer) {
             try {
+                $this->_client = new Client();
+                $this->_client->setAuth($this->_username, $this->_password);
                 $this->setStatsUrl($loadBalancer);
                 $this->_log('info', "Getting stats from load balancer $loadBalancer...");
                 $clusterStats[$loadBalancer] = $this->getStatsByProxy();
@@ -279,6 +280,8 @@ class HAProxyClient
     public function setServerStatusInCluster(array $loadBalancers, $serverName, $action = 'enable', $proxyName = 'all')
     {
         foreach ($loadBalancers as $loadBalancer) {
+            $this->_client = new Client();
+            $this->_client->setAuth($this->_username, $this->_password);
             $this->setStatsUrl($loadBalancer);
             $this->setClientUri($loadBalancer);
             $this->setServerStatus($serverName, $action, $proxyName);
