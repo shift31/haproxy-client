@@ -30,13 +30,13 @@ class HAProxyClient
 
 
     /**
-     * @param string|null $serverFqdn
-     * @param int         $port
-     * @param string      $baseUrl
-     * @param string      $username
-     * @param string      $password
-     * @param int         $checkMaxRetries
-     * @param null        $logger
+     * @param string|null $serverFqdn   FQDN of the haproxy server
+     * @param int         $port         TCP port on which the 'stats' service is listening
+     * @param string      $baseUrl      Request path for the haproxy 'stats' service
+     * @param string      $username     Username for access to 'stats' service
+     * @param string      $password     Password for access to 'stats' service
+     * @param int         $checkMaxRetries  Number of times to retry status verification
+     * @param null        $logger       An instance of a logging class such as Monolog or Zend\Log
      */
     public function __construct(
         $serverFqdn, $port, $baseUrl, $username, $password, $checkMaxRetries = 15, $logger = null
