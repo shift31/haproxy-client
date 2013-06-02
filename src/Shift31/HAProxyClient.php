@@ -264,6 +264,7 @@ class HAProxyClient
                 $this->_log('debug', "HAProxy response on $this->_serverFqdn: $notice");
             } else {
                 $this->_log('err', "Failed to $action '$serverName' in proxy '$proxyName' on $this->_serverFqdn");
+                $this->_log('debug', "Response: " . $response->getStatusCode() . ' - ' . $response->getReasonPhrase());
             }
         }
     }
