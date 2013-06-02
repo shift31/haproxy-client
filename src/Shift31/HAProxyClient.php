@@ -260,7 +260,7 @@ class HAProxyClient
 
                 // get the status notice displayed on the page
                 /** @noinspection PhpUndefinedMethodInspection */
-                $notice = str_replace(array('[X]', '.'), '', qp($response->getRawBody(), 'div')->text());
+                $notice = str_replace(array('[X]', '.'), '', qp($response->getBody(), 'div')->text());
                 $this->_log('debug', "HAProxy response on $this->_serverFqdn: $notice");
             } else {
                 $this->_log('err', "Failed to $action '$serverName' in proxy '$proxyName' on $this->_serverFqdn");
