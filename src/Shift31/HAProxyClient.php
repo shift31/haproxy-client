@@ -244,7 +244,7 @@ class HAProxyClient
                     array(
                          's' => $serverName,
                          'b' => $proxyName,
-                         'action', $action
+                         'action' => $action
                     )
                 );
                 $this->_client->send();
